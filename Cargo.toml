@@ -1,0 +1,46 @@
+[package]
+name = "ubu-core"
+version = "0.1.0"
+authors = ["Sean Coughlin <sean@froth.com>"]
+edition = "2018"
+
+[package.metadata.deb]
+depends = "$auto, systemd"
+extended-description = "simple hello world test"
+section = "admin"
+priority = "optional"
+assets = [
+    ["target/release/hello-world", "usr/bin/hello", "755"],
+    ["debian/hello.service", "/lib/systemd/system/hello.service", "644"], 
+]
+maintainer-scripts = "debian/scripts"
+
+[features]
+default = ["sense"]
+sense = []
+json = []
+process = []
+
+[dependencies]
+regex = "*"
+lazy_static = "*"
+chrono = { version = "*", features = ["serde"] }
+tokio = { version = "*", features = ["full"] }
+serde = { version = "*", features = ["derive"] }
+rs-pop3 = "*"
+mail-parser = "*"
+rusqlite = { version = "*", features = ["chrono"] }
+warp = "*"
+log = "*"
+pretty_env_logger = "*"
+sha2 ="*"
+rand="*"
+rand_chacha = "*"
+
+[dependencies.imap]
+version = "3.0.0-alpha.12"
+default-features = false
+
+[dev-dependencies]
+serde_json = "*"
+serde_test = "*"

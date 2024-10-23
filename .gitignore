@@ -1,0 +1,9 @@
+/Cargo.lock
+/bin
+debug/
+target/
+/pkg
+/*.db
+/*.sql
+/*.py
+/*.db3
